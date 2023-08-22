@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Pencil1Icon } from "@radix-ui/react-icons";
-import { ScrollArea } from "./ui/scroll-area";
 import { Input } from "./ui/input";
 
 export default function CartSlider() {

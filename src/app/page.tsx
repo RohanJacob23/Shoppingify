@@ -1,6 +1,5 @@
 import CartSlider from "@/components/CartSlider";
 import { Input } from "@/components/ui/input";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons";
 
 export default function Home() {

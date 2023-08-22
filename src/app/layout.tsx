@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import Sidenav from "@/components/Sidenav";
 import CartSlider from "@/components/CartSlider";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const quicksand = Quicksand({
   weight: ["600", "700"],
