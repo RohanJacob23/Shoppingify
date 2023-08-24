@@ -12,9 +12,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Badge } from "./ui/badge";
+import useCart from "@/zustand/cart";
 
 export default function Sidenav() {
   const pathname = usePathname();
+  const setShowCart = useCart((state) => state.setShowCart);
   return (
     <section className="relative z-50 flex flex-col justify-between items-center min-w-[3.84rem] md:min-w-[6rem] h-screen bg-white py-11">
       <Image
@@ -105,7 +107,10 @@ export default function Sidenav() {
           </div>
         </TooltipProvider>
       </div>
-      <div className="relative flex items-center justify-center rounded-full bg-[#F9A109] w-11 h-11">
+      <div
+        className="relative flex items-center justify-center rounded-full bg-[#F9A109] w-11 h-11 cursor-pointer"
+        onClick={() => setShowCart()}
+      >
         <Image
           src="/icons/cart.png"
           alt="menu"

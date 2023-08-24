@@ -39,7 +39,7 @@ export default function Home() {
     },
   ];
   return (
-    <section className="py-9 w-screen md:mr-96">
+    <section className="py-9 w-screen max-w-5xl md:mr-96">
       {/* main section */}
       <div className="px-3 md:px-20">
         {/* uppser section */}
@@ -66,7 +66,7 @@ export default function Home() {
               <h1 className="text-lg mt-7 mb-5 md:mb-4 md:mt-14">
                 {item.item}
               </h1>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 text-sm md:text-base gap-x-2 gap-y-6 md:gap-x-5 md:gap-y-12">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 text-sm md:text-base gap-x-2 gap-y-6 md:gap-x-5 md:gap-y-12 w-fit">
                 {/* items list in small cards */}
                 {item.itemList.map((list, index) => (
                   <div

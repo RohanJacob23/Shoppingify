@@ -5,8 +5,10 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { Pencil1Icon } from "@radix-ui/react-icons";
 import { Input } from "./ui/input";
+import useCart from "@/zustand/cart";
 
 export default function CartSlider() {
+  const showCart = useCart((state) => state.showCart);
   const tempCart = [
     {
       item: "Fruits and Vegetables",
@@ -26,7 +28,11 @@ export default function CartSlider() {
     },
   ];
   return (
-    <section className="fixed right-0 top-0 flex flex-col bg-[#FFF0DE] h-full w-64 md:w-96 pt-6 md:pt-11">
+    <section
+      className={`fixed right-0 top-0 flex flex-col bg-[#FFF0DE] h-screen w-64 md:w-96 pt-6 md:pt-11 ${
+        showCart ? "translate-x-0" : "translate-x-full"
+      } transition-transform duration-500 ease-in-out`}
+    >
       <div className="flex justify-around bg-[#80485B] rounded-3xl text-white px-3 py-5 w-64 md:w-80 h-32 mx-4 md:m-auto self-center">
         <Image
           src="/icons/source.svg"
