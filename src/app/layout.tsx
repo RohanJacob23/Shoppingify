@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import Sidenav from "@/components/Sidenav";
 import CartSlider from "@/components/CartSlider";
+import AddNewItem from "@/components/AddNewItem";
 
 const quicksand = Quicksand({
   weight: ["600", "700"],
@@ -27,6 +28,7 @@ export default function RootLayout({
         <main className="scrollArea relative w-screen h-screen overflow-scroll">
           {children}
           <CartSlider />
+          <AddNewItem />
         </main>
       </body>
     </html>

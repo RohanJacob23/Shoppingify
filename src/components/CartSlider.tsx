@@ -6,9 +6,11 @@ import { Button } from "./ui/button";
 import { Pencil1Icon } from "@radix-ui/react-icons";
 import { Input } from "./ui/input";
 import useCart from "@/zustand/cart";
+import useAddItem from "@/zustand/newItem";
 
 export default function CartSlider() {
   const showCart = useCart((state) => state.showCart);
+  const setShowAddItem = useAddItem((state) => state.setShowAddItem);
   const tempCart = [
     {
       item: "Fruits and Vegetables",
@@ -45,7 +47,10 @@ export default function CartSlider() {
           <p className="w-40 font-bold text-base">
             Didn&apos;t find what you need?
           </p>
-          <Button className="bg-white text-black rounded-xl hover:text-white">
+          <Button
+            className="bg-white text-black rounded-xl hover:text-white"
+            onClick={() => setShowAddItem()}
+          >
             Add Item
           </Button>
         </div>
