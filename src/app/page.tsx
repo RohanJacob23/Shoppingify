@@ -1,43 +1,9 @@
-import CartSlider from "@/components/CartSlider";
+import SmallCards from "@/components/SmallCards";
 import { Input } from "@/components/ui/input";
-import { MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { tempItems } from "@/temp";
 
 export default function Home() {
-  const tempItems = [
-    {
-      item: "Fruits and Vegetables",
-      itemList: [
-        { item: "Avacado" },
-        { item: "Banana" },
-        { item: "Bunch of carrots" },
-        { item: "Pre-cooked corn 450kg" },
-        { item: "Watermelon" },
-        { item: "Mandarin Nadorcott" },
-        { item: "Piele De Sapo Melon" },
-      ],
-    },
-    {
-      item: "Meat and Fish",
-      itemList: [
-        { item: "Chicken 1kg" },
-        { item: "Chicken leg box" },
-        { item: "Salmon 1kg" },
-        { item: "Pork fillet 450g" },
-      ],
-    },
-    {
-      item: "Beverages",
-      itemList: [
-        { item: "Avacado" },
-        { item: "Banana" },
-        { item: "Bunch of carrots" },
-        { item: "Pre-cooked corn 450kg" },
-        { item: "Watermelon" },
-        { item: "Mandarin Nadorcott" },
-        { item: "Piele De Sapo Melon" },
-      ],
-    },
-  ];
   return (
     <section className="py-9 w-screen max-w-5xl md:mr-96">
       {/* main section */}
@@ -69,13 +35,7 @@ export default function Home() {
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 text-sm md:text-base gap-x-2 gap-y-6 md:gap-x-5 md:gap-y-12 w-fit">
                 {/* items list in small cards */}
                 {item.itemList.map((list, index) => (
-                  <div
-                    key={index}
-                    className="smallCards h-fit flex items-center justify-between bg-white rounded-xl w-32 md:w-44 p-4 space-x-1.5"
-                  >
-                    <p className="break-words">{list.item}</p>
-                    <PlusIcon className="shrink-0 w-5 h-5 opacity-30 hover:cursor-pointer hover:opacity-100" />
-                  </div>
+                  <SmallCards key={index} item={list} category={item.item} />
                 ))}
               </div>
             </div>

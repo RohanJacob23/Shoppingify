@@ -1,9 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { Pencil1Icon } from "@radix-ui/react-icons";
+import {
+  MinusIcon,
+  Pencil1Icon,
+  PlusIcon,
+  TrashIcon,
+} from "@radix-ui/react-icons";
 import { Input } from "./ui/input";
 import useCart from "@/zustand/cart";
 import useAddItem from "@/zustand/newItem";
@@ -11,24 +16,27 @@ import useAddItem from "@/zustand/newItem";
 export default function CartSlider() {
   const showCart = useCart((state) => state.showCart);
   const setShowAddItem = useAddItem((state) => state.setShowAddItem);
-  const tempCart = [
+  const [tempCart, setTempCart] = useState([
     {
       item: "Fruits and Vegetables",
-      itemList: [{ item: "Avacado" }, { item: "Pre-cooked corn 450kg" }],
+      itemList: [
+        { item: "Avacado", quantity: 1 },
+        { item: "Pre-cooked corn 450kg", quantity: 1 },
+      ],
     },
     {
       item: "Meat and Fish",
       itemList: [
-        { item: "Chicken 1kg" },
-        { item: "Chicken leg box" },
-        { item: "Salmon 1kg" },
-        { item: "Salmon 1kg" },
-        { item: "Salmon 1kg" },
-        { item: "Salmon 1kg" },
-        { item: "Pork fillet 450g" },
+        { item: "Chicken 1kg", quantity: 1 },
+        { item: "Chicken leg box", quantity: 1 },
+        { item: "Salmon 1kg", quantity: 1 },
+        { item: "Salmon 1kg", quantity: 1 },
+        { item: "Salmon 1kg", quantity: 1 },
+        { item: "Salmon 1kg", quantity: 1 },
+        { item: "Pork fillet 450g", quantity: 1 },
       ],
     },
-  ];
+  ]);
   return (
     <section
       className={`fixed right-0 top-0 flex flex-col bg-[#FFF0DE] h-screen w-64 md:w-96 pt-6 md:pt-11 ${
@@ -62,16 +70,44 @@ export default function CartSlider() {
       </div>
 
       <div className="scrollArea flex flex-col py-4 space-y-14 h-full overflow-y-scroll pl-6 pr-3 md:pl-12 md:pr-8">
-        {tempCart.map(({ item, itemList }, index) => (
-          <div key={index}>
+        {tempCart.map(({ item, itemList }, i) => (
+          <div key={i}>
             <h1 className="text-sm font-medium text-[#828282]">{item}</h1>
             <div className="space-y-4">
-              {itemList.map(({ item }, index) => (
+              {itemList.map(({ item, quantity }, index) => (
                 <div key={index} className="flex items-center justify-between">
                   <h1 className="text-sm md:text-lg font-medium">{item}</h1>
-                  <p className="rounded-3xl border-2 border-[#F9A109] px-5 py-2 text-[#F9A109] font-bold">
-                    3 pcs
-                  </p>
+                  <div className="group/cart text-xs">
+                    <p className="block group-hover/cart:hidden rounded-3xl border-2 border-[#F9A109] px-5 py-2 text-[#F9A109] font-bold min-w-[4.25rem]">
+                      {quantity} pcs
+                    </p>
+                    <div className="hidden items-center group-hover/cart:flex bg-white rounded-xl font-bold min-w-[5.25rem]">
+                      <div className="flex self-stretch items-center justify-center bg-[#F9A10A] rounded-xl w-9">
+                        <TrashIcon className="h-4 w-4 cursor-pointer text-white my-auto" />
+                      </div>
+                      <MinusIcon
+                        className="h-6 w-6 cursor-pointer text-[#F9A109] pr-1"
+                        onClick={() =>
+                          setTempCart((prev) => {
+                            prev[i].itemList[index].quantity--;
+                            return [...prev];
+                          })
+                        }
+                      />
+                      <p className="rounded-3xl border-2 border-[#F9A109] px-5 py-2 text-[#F9A109] whitespace-nowrap">
+                        {quantity} pcs
+                      </p>
+                      <PlusIcon
+                        className="h-6 w-6 cursor-pointer text-[#F9A109] pl-1"
+                        onClick={() =>
+                          setTempCart((prev) => {
+                            prev[i].itemList[index].quantity++;
+                            return [...prev];
+                          })
+                        }
+                      />
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

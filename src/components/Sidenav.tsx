@@ -52,7 +52,7 @@ export default function Sidenav() {
             <div
               className={`${
                 pathname === "/" ? "block" : "hidden"
-              } group-hover:block absolute top-1/2 -translate-y-1/2 -left-1/4 -translate-x-full w-1.5 h-11 bg-[#F9A109] rounded-r`}
+              } group-hover:block absolute top-1/2 -translate-y-1/2 md:-left-1/4 -translate-x-full w-1.5 h-11 bg-[#F9A109] rounded-r`}
             ></div>
           </div>
           <div className="relative group">
@@ -77,14 +77,14 @@ export default function Sidenav() {
             <div
               className={`${
                 pathname.includes("history") ? "block" : "hidden"
-              } group-hover:block absolute top-1/2 -translate-y-1/2 -left-1/4 -translate-x-full w-1.5 h-11 bg-[#F9A109] rounded-r`}
+              } group-hover:block absolute top-1/2 -translate-y-1/2 md:-left-1/4 -translate-x-full w-1.5 h-11 bg-[#F9A109] rounded-r`}
             ></div>
           </div>
           <div className="relative group">
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="ghost" asChild>
-                  <Link href="/home">
+                  <Link href="/statistics">
                     <Image
                       src="/icons/insert_chart.png"
                       alt="list"
@@ -102,7 +102,7 @@ export default function Sidenav() {
             <div
               className={`${
                 pathname.includes("statistics") ? "block" : "hidden"
-              } group-hover:block absolute top-1/2 -translate-y-1/2 -left-1/4 -translate-x-full w-1.5 h-11 bg-[#F9A109] rounded-r`}
+              } group-hover:block absolute top-1/2 -translate-y-1/2 md:-left-1/4 -translate-x-full w-1.5 h-11 bg-[#F9A109] rounded-r`}
             ></div>
           </div>
         </TooltipProvider>

@@ -4,6 +4,7 @@ import { Quicksand } from "next/font/google";
 import Sidenav from "@/components/Sidenav";
 import CartSlider from "@/components/CartSlider";
 import AddNewItem from "@/components/AddNewItem";
+import ItemCart from "@/components/ItemCart";
 
 const quicksand = Quicksand({
   weight: ["600", "700"],
@@ -29,6 +30,7 @@ export default function RootLayout({
           {children}
           <CartSlider />
           <AddNewItem />
+          <ItemCart />
         </main>
       </body>
     </html>
